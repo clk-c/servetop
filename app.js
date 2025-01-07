@@ -148,16 +148,19 @@ app.get('/admin/active-users', (req, res) => {
     res.json({ activeUsers });
 });
 
+require('dotenv').config();
+
 const nodemailer = require('nodemailer');
 
 // Configuration du transporteur nodemailer
 const transporter = nodemailer.createTransport({
-    service: 'gmail', 
+    service: 'gmail',
     auth: {
-        user: 'alhassansidibe83@gmail.com', 
-        pass: 'tqiw mweo kliz amvi' 
+        user: process.env.EMAIL_USER, // Adresse email
+        pass: process.env.EMAIL_PASS  // Mot de passe ou clé d'application
     }
 });
+
 
 
 
